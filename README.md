@@ -1,7 +1,7 @@
 # CNNs-for-CAFIR-10
 **Examples of some well-performing CNN models on the CAFIR-10 dataset, including accuracy, loss curves, and confusion matrices.**
 
-1.ResNet (Residual Networks): ResNet, introduced by Kaiming He and colleagues in 2015, addresses the vanishing gradient problem that arises when training very deep neural networks. The key idea behind ResNet is the introduction of "residual blocks" and skip (or shortcut) connections.
+1. ResNet (Residual Networks): ResNet, introduced by Kaiming He and colleagues in 2015, addresses the vanishing gradient problem that arises when training very deep neural networks. The key idea behind ResNet is the introduction of "residual blocks" and skip (or shortcut) connections.
 
 Key Features:
 
