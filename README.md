@@ -3,7 +3,7 @@
 
 1. ResNet (Residual Networks): ResNet, introduced by Kaiming He and colleagues in 2015, addresses the vanishing gradient problem that arises when training very deep neural networks. The key idea behind ResNet is the introduction of "residual blocks" and skip (or shortcut) connections.
 
-   Key Features:
+   · Key Features:
 
    Residual Blocks: In traditional networks, each layer tries to learn the desired underlying transformation from its inputs. In ResNet, each layer is designed to learn only 
    the residual (or difference) between its input and the desired output. Hence, it's called a "residual block". Mathematically, if H(x) is the desired underlying mapping, 
