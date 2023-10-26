@@ -1,7 +1,7 @@
 # CNNs-for-CAFIR-10
 **Examples of some well-performing CNN models on the CAFIR-10 dataset, including accuracy, loss curves, and confusion matrices.**
 
-1.ResNet (Residual Networks): ResNet, introduced by Kaiming He and colleagues in 2015, addresses the vanishing gradient problem that arises when training very deep neural networks. The key idea behind ResNet is the introduction of "residual blocks" and skip (or shortcut) connections.
+**1.ResNet (Residual Networks):** ResNet, introduced by Kaiming He and colleagues in 2015, addresses the vanishing gradient problem that arises when training very deep neural networks. The key idea behind ResNet is the introduction of "residual blocks" and skip (or shortcut) connections.
 
    Key Features:
 
@@ -18,7 +18,7 @@
    Advantages: Enables the training of much deeper networks without a significant increase in training time or risk of overfitting. Improved gradient flow through the 
    network due to skip connections. Generally gives better performance compared to its non-residual counterparts.
 
-2.MobileNet: MobileNet, as the name suggests, is designed primarily for mobile and embedded vision applications. It's an efficient model that provides a good trade-off between computational cost (in terms of both memory and processing power) and performance.
+**2.MobileNet:** MobileNet, as the name suggests, is designed primarily for mobile and embedded vision applications. It's an efficient model that provides a good trade-off between computational cost (in terms of both memory and processing power) and performance.
 
    Key Features:
 
@@ -35,8 +35,36 @@
 
    Advantages: Significantly reduced number of parameters and computational cost compared to large models like VGG or ResNet, making it suitable for mobile devices. Despite 
    its small size, it offers competitive accuracy on many tasks.
+   
+**3.DenseNet:** DenseNet (Densely Connected Convolutional Networks) is a convolutional neural network (CNN) architecture introduced by Gao Huang, Zhuang Liu, Laurens van der Maaten, Kilian Q. Weinberger, and others in 2017. What distinguishes DenseNet from other popular convolutional networks is its dense connections between feature maps. While conventional CNNs, like VGG and ResNet, rely on skip connections or shortcuts between layers to facilitate the flow of gradients, the core proposition of DenseNet is to ensure every layer gets a direct connection to the feature information of all preceding layers. This is achieved by establishing dense connections.
 
-3.RepVGG is a neural network architecture designed for both efficient deployment and effective training, introduced by researchers at Tencent. It stands out due to its simplicity and efficiency. The fundamental idea behind RepVGG is to have a structural difference between its training-time architecture and its inference-time architecture.
+   Key Features:
+   Dense Connectivity: In DenseNet, the output of the l-th layer is the combined feature maps of all preceding layers. This means the l-th layer has 'l' inputs, which are 
+   outputs from each of the preceding layers. All these inputs are concatenated together to form the input for the l-th layer.
+
+   Growth Rate: The growth rate is a hyperparameter which denotes the number of feature maps produced by each layer. Since every layer receives feature maps from all 
+   preceding layers, its total output is the sum of outputs from all preceding layers plus its own.
+ 
+   Bottleneck Layers: To reduce the number of computations and parameters, DenseNet typically employs a 1x1 convolution before each convolution operation, referred to as the 
+   bottleneck layer. It's responsible for reducing the number of feature maps.
+
+   Transition Layers: Given that the continuous concatenation of feature maps would lead to an explosive increase in the number of feature maps, DenseNet introduces 
+   transition layers to control the number of feature maps. Transition layers use a 1x1 convolution (to reduce the number of feature maps) followed by a 2x2 average pooling 
+   to reduce the size of the feature maps.
+   
+   Advantages:
+   Parameter Efficiency: Since all layers share feature maps from all preceding layers, DenseNet is more parameter-efficient than many other architectures.
+
+   Improved Gradient Flow: The dense connections ensure better flow of gradients during both forward and backward propagation, which helps mitigate the vanishing gradient 
+   problem.
+
+   Encourages Feature Reuse: Given that all prior features are directly made available to every layer, DenseNet has the capability to reuse features across different parts 
+   of the network.
+
+   Better Regularization: The dense connections also provide an implicit form of regularization, allowing DenseNet to perform well with fewer data, thus reducing the risk of 
+   overfitting.
+   
+**4.RepVGG** is a neural network architecture designed for both efficient deployment and effective training, introduced by researchers at Tencent. It stands out due to its simplicity and efficiency. The fundamental idea behind RepVGG is to have a structural difference between its training-time architecture and its inference-time architecture.
 
    Training-time Architecture: During training, RepVGG uses a multi-branch block. Each block contains three branches: a 3x3 convolution, a 1x1 convolution, and an identity 
    connection. Batch normalization and ReLU activation are applied after both convolutions. The 1x1 convolution and identity connection are only applied if the input and 
